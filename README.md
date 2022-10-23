@@ -38,7 +38,8 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * ```textual inversion``` trains a single token on a small number of new input images and can produce compelling results (indian watercolor example)
 * ```dreambooth``` is another example of fine tuning (?) takes an existing token and fine tunes a model to recognise that token (?) unclear on how this is different from ```embedding```
 
-## What's Actually Going on from a Machine Learning Point of View
+### What's Going On
+* What's actually going on here from a machine learning perspective?
 * stable diffusion is normally explained from a mathmatical derivation
 * this will be a different way of thinking about stable diffusion
 * both explanations are equally mathmatically valid
