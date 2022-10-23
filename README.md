@@ -95,5 +95,18 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * we call this set of models a ```CLIP``` (?)
 * we call the association table contrasting images and text associations ```contrastive loss``` or ```CL```
 * so we refer to our text encoder as a ```clip text encoder``` which will produce similar embeddings (encoded vectors?) for similar text
-* 
+* so now we have the ```unet``` that can denoise noisy latents into less noisy latents including pure noise, a ```VAE's decoder``` that can take latents and make an image and a ```CLIP text encoder``` that can take similar texts and produce similar embeddings
+* sidenote: ```gradients``` are often called ```score functions```
+* the language here is weird and confusing which you can hopefully ignore
+* the term ```time steps``` is confusing
+* ```inference``` is when you're generating an image from pure noise
+* ```🤔 🤔 🤔``` When we're going from a noisier image to a less noisy image it's not the image elements that are being identified and changed, its the noise. The unet is good at identifying noise that can be eliminated, not image elements that can be amplified. (?) This is why we do it iteratively, denoising an image a bit at a time.
+* a ```diffusion sampler```
+* ```constant``` / ```learning rate``` (?) 
+* ```momentum``` / ```adam``` => ```optimizer(s)``` (?)
+* a lot of this is from the world of differential equations
+* ANYWAY, the models theoretically work better if they know what percentage of the input is static, which might be unecessary / overly easy with neural nets, but this is from the world of differential equations
+* ```perceptual loss``` (?)
+* we're thinking of this as an ```optimization``` problem instead of a ```diferential``` problem
+* next lesson we'll continue the broad overview in the notebook and then move on to implementing this with the python standard library
 
