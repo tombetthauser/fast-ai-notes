@@ -71,3 +71,25 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * the reason these are interesting is because we can put an image through just one half of this (either the encoder or the decoder half) and it will act as an effective image compression algorithm
 * we call the compressed images ```latents```
 * now we can compress all our input images that we want to train our ```unet``` on with ```latents``` that are much smaller than the original images
+* the outcoder is referred to as the ```VAE's encoder``` or ```the VAE``` which will be covered later
+* but what we want is to pass in a noisy number and have it pick out and clean up an image of that number
+* so now we want the neural net to take in the noise and the target number
+* its going to learn to pull the number out better with the target defined as input
+* we refer to whatever we're trying to remove the noise from as ```guidance``` (?)
+* this approach works as is for identifying / generating numbers 1-10 but a sentence like "a cute teddy bear" is  not as straight forward
+* we need a numeric representation of this sentence
+* we can get word / image associations from the internet via alt text
+* with millions of images / alt-texts scraped we can create two models, a ```text encoder``` and an ```image encoder```
+* we can think of these for now as black-box neural nets that contain weights, which means they need inputs, outputs and a loss function
+* we don't care about the specific architectures of these neural nets
+* the weights for both of these models will start off as random with random output
+* so both of these models output ```vectors``` or encoded representations of the respective image and text inputs
+* we want these vector outputs to be similar for text that is supposed to be related to a given image
+* we assess how close these vectors are by adding them together, which we refer to as the ```dot product``` of the two
+* remember that these ```vectors``` are just ```3D matrices```
+* conversely we want the dot product of bad image / text vectors to be low
+* we can represent these dot products between image and text encoded vectors in an association table
+* this table allows us to create a loss function between the sum of the diagonal dot products that represent strong image / text associations and the rest of the association table that represents bad image / text pairings (?)
+* this puts encoded image and text vectors into the same space, a ```multimodal set of models```
+* ```🤯 🤯 🤯```so we can feed similar sentences into our text encoder and get similar vectors when these are trained, and similar images fed into the separate image encoder will also produce similar vectors both to within the scope of the image encoder but these vectors will also be similar to those from the text encoder. That means we can encode a sentence, get a vector, decode that vector with the image encoder (decoder) and get a new image that will be associated with the original input text.
+* 
