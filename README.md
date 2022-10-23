@@ -36,4 +36,25 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * unclear on what the fine tuning pokemon example was showcasing (?)
 * another example of ```fine-tuning``` is ```textual inversion``` which fine-tunes a single ```embedding```
 * ```textual inversion``` trains a single token on a small number of new input images and can produce compelling results (indian watercolor example)
-* 
+* ```dreambooth``` is another example of fine tuning (?) takes an existing token and fine tunes a model to recognise that token (?) unclear on how this is different from ```embedding```
+
+## What's Actually Going on from a Machine Learning Point of View
+* stable diffusion is normally explained from a mathmatical derivation
+* this will be a different way of thinking about stable diffusion
+* both explanations are equally mathmatically valid
+* start with example of trying to use stable diffusion to create hand-written digits
+* imagine some magic api function can take any image and give a probability that an image is a handwritten digit...
+* you can use this identifying api funtion to create new images of hand written digits
+* you could try tweaking an individual pixel's brightness and see what the effect is on the probability
+* each pixel has a gradient that represents how it could take a given pixel closer or further away from the target image (?)
+* you can apply a multiplyer across all the gradients, change the image, and then re evaluate the new image
+* ```finite differencing``` would require applying this process to every pixel individually
+* in place of this we can use ```f.backward()``` (?) to use ```analytic derivatives``` and get ```image_x.grad``` (?) which would give us our desired output all at once (?)
+* tldr → ```analytic derivatives``` method makes this more efficient but is conceptually the same process, it gets us one pass closer to an image that meets our desired criteria
+* we'll write our own calculus functions later on, like f.backward
+* for now we'll assume that these things exist
+* 🤔 So we're magically getting image_x.gradient from magic_function.backward() without having to actually run our magic_function on image_x for every pixel variation. It seems like th reason we would do this repeatedly in passes rather than just maximize the gradient in one pass is because the image would change too literally on a local individual pixel level. And doing it in passes gives magic_function.backward() a chance to reassess the individual changes in the context of a more and more cohesive image. (?)
+* but this all still relies on magic_function working
+* right now it's just a black-box
+* typically if we've got a black-box we can train a neural net to perform our desired function
+*  
