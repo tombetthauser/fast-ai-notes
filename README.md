@@ -92,4 +92,8 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * this table allows us to create a loss function between the sum of the diagonal dot products that represent strong image / text associations and the rest of the association table that represents bad image / text pairings (?)
 * this puts encoded image and text vectors into the same space, a ```multimodal set of models```
 * ```🤯 🤯 🤯```so we can feed similar sentences into our text encoder and get similar vectors when these are trained, and similar images fed into the separate image encoder will also produce similar vectors both to within the scope of the image encoder but these vectors will also be similar to those from the text encoder. That means we can encode a sentence, get a vector, decode that vector with the image encoder (decoder) and get a new image that will be associated with the original input text.
+* we call this set of models a ```CLIP``` (?)
+* we call the association table contrasting images and text associations ```contrastive loss``` or ```CL```
+* so we refer to our text encoder as a ```clip text encoder``` which will produce similar embeddings (encoded vectors?) for similar text
 * 
+
