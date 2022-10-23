@@ -53,8 +53,21 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * tldr → ```analytic derivatives``` method makes this more efficient but is conceptually the same process, it gets us one pass closer to an image that meets our desired criteria
 * we'll write our own calculus functions later on, like f.backward
 * for now we'll assume that these things exist
-* 🤔 So we're magically getting image_x.gradient from magic_function.backward() without having to actually run our magic_function on image_x for every pixel variation. It seems like th reason we would do this repeatedly in passes rather than just maximize the gradient in one pass is because the image would change too literally on a local individual pixel level. And doing it in passes gives magic_function.backward() a chance to reassess the individual changes in the context of a more and more cohesive image. (?)
+* ```🤔 🤔 🤔``` So we're magically getting image_x.gradient from magic_function.backward() without having to actually run our magic_function on image_x for every pixel variation. It seems like th reason we would do this repeatedly in passes rather than just maximize the gradient in one pass is because the image would change too literally on a local individual pixel level. And doing it in passes gives magic_function.backward() a chance to reassess the individual changes in the context of a more and more cohesive image. (?)
 * but this all still relies on magic_function working
 * right now it's just a black-box
 * typically if we've got a black-box we can train a neural net to perform our desired function
-*  
+* normally distributed random variable with a mean (or main ?) of zero and a variance of 0.0 to 1.0 ```N(0, 0.3)``` which in sum produces a ```mean squared error``` (?)
+* so to train our neural net we feed it a set of hand-written numbers where we've added a little noise to some and a lot to others, it predicts what the noise was that we added, we take the loss between the predicted output vs the actual noise produces (the ```mean squared error```) and we use that to update the weights
+* now we have a trained neural network that can identify hand written numbers and can also push static incrementally towards a new image of a hand written number
+* the first component of stable diffusion is a ```unet``` which was developed for medical imaging and that we'll build ourselves later on
+* the input for a ```unet``` is a somewhat noisy image and the output is the noise
+* the standard input image resolution is 512 pixels x 512 pixels by 3 color channels
+* we know its possible to compress images for more efficient storage (ie jpegs) so we can compress our 512x512x3 image down to smaller and smaller images with deeper and deeper dimensions and then compressing the dimensions
+* these compression layers are ```neural network convolutions```
+* initially when training a neural network we would perform these convolutions / compressions and then uncompress / de-convolute it and measure the loss / mean square error
+* we train this model to spit out exactly what we put in
+* this type of model is called an ```auto-encoder```
+* the reason these are interesting is because we can put an image through just one half of this (either the encoder or the decoder half) and it will act as an effective image compression algorithm
+* we call the compressed images ```latents```
+* now we can compress all our input images that we want to train our ```unet``` on with ```latents``` that are much smaller than the original images
