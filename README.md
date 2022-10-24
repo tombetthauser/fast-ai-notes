@@ -111,3 +111,26 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * we're thinking of this as an ```optimization``` problem instead of a ```diferential``` problem
 * next lesson we'll continue the broad overview in the notebook and then move on to implementing this with the python standard library
 
+
+## Lecture 10
+
+### Review & New Papers
+* the 'main bit' of stable diffusion is the ```unet```
+* the unet takes a noisy image and predicts the noise, then it compares to the control input, determines the loss and updates the weights
+* ```distillation``` is a common practice in machine learning
+* the basic idea of distillation is that you take a ```teacher network``` that knows how to do something big and complex and train a ```student network``` to do the same thing faster / better etc
+* this can be as simple as taking an intermediate step in a generative diffusion (static --> image) and the final product image and training a new unet to go from the intermediate step to the end product
+* this allows steps to be skipped as more and more examples of the teacher process are accumulated
+* ```classifier free guided diffusion models``` cute puppy --> encoded vector --> unet --> image of a puppy // " " --> (same encoder) encoded vector --> unet --> arbitrary image // take the weighted average of the two output images, then use this for the next step of the diffusion process (?)
+* this is skippable (?)
+* "the ability to take any photo of a person or whatever and literally change what the person is doing is societally very important and means that anyone now can generate believable photos that never existed"
+* ```TPU``` => ```tensor processing unit```
+
+### Looking Inside the Pipeline
+* remember our three critical pieces are the ```clip encoder``` the ```VAE``` and the ```unet```
+* converting timesteps into the amount of noise (?) use a scheduler (?)
+* first we need to tokenize the input sentence
+* this translates each word into an individual number (only words its specifically trained on already?)
+* 
+* 
+
