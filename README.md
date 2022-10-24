@@ -131,6 +131,26 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * converting timesteps into the amount of noise (?) use a scheduler (?)
 * first we need to tokenize the input sentence
 * this translates each word into an individual number (only words its specifically trained on already?)
-* 
-* 
+* ```timestep``` is just a way to look up how much noise is added to a given training image efficiently by 
+
+### Matrix / Tensor Construction
+* pick a notebook setup or work environment
+* download the images of hand-written numbers dataset
+* make functions to parse it into individual matrices / tensors
+* find a way to open / plot these as images
+* ```tensor history```
+  - APL was the first language to use tensor / array math?
+  - made by ```ken iverson```
+  - he studied tensor analysis which is a sub-discipline of physics
+  - applying an arithmetic operation to a tensor / array applies operation to each element individually
+  - applying an operation between two tensors / arrays applies the operation between each respective pairing of elements
+  - this all bypasses the need for iterating through matrices / arrays
+* a rank 3 tensor is a 3 dimensional array
+* a scalar is a 0 dimensional tensor (?)
+
+### Random Number Function
+* cloudflare uses lavalamps
+* based on the ```whitman hill algorithm```
+* basically we use an initial random number and track a global state that we modify
+
 
