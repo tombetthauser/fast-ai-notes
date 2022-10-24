@@ -4,8 +4,11 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 - [free fast.ai lectures / part-2](https://www.fast.ai/posts/part2-2022-preview.html)
 - [rust docs / examples](https://doc.rust-lang.org/stable/rust-by-example/hello.html)
 
+<details>
+  <summary>Lecture 9</summary>
+  
 ## Lecture 9
-
+    
 ### Introduction
 * jumping into part 2 will be tough
 * knowing how to write an sdk loop (?) pytorch / tensorflow basics etc helps
@@ -111,9 +114,13 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * we're thinking of this as an ```optimization``` problem instead of a ```diferential``` problem
 * next lesson we'll continue the broad overview in the notebook and then move on to implementing this with the python standard library
 
+</details>
 
-## Lecture 10
+<details>
+<summary>Lecture 10</summary>
 
+## Lecture 10 
+  
 ### Review & New Papers
 * the 'main bit' of stable diffusion is the ```unet```
 * the unet takes a noisy image and predicts the noise, then it compares to the control input, determines the loss and updates the weights
@@ -153,4 +160,5 @@ Notes on the second part of fast.ai which focuses on building a stable diffusion
 * based on the ```whitman hill algorithm```
 * basically we use an initial random number and track a global state that we modify
 
+</details>
 
